@@ -5,28 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpeter <jpeter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/13 13:51:22 by jpeter            #+#    #+#             */
-/*   Updated: 2024/11/16 10:23:11 by jpeter           ###   ########.fr       */
+/*   Created: 2024/11/16 10:24:07 by jpeter            #+#    #+#             */
+/*   Updated: 2024/11/16 10:35:06 by jpeter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "whatever.hpp"
+#include "iter.hpp"
 
-int main( void ) {
-    int a = 2;
-    int b = 3;
+void zero(int const& i)
+{
+	std::cout << i << " - 0" << std::endl;
+}
 
-    ::swap(a, b);
-    std::cout << "a = " << a << ", b = " << b << std::endl;
-    std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl;
-    std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;
+template <typename T>
+void zeroTmp(T const& t)
+{
+	std::cout << t << " - 0" << std::endl;
+}
 
-    std::string c = "chaine1";
-    std::string d = "chaine2";
-
-    ::swap(c, d);
-    std::cout << "c = " << c << ", d = " << d << std::endl;
-    std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
-    std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
-    return 0;
+int main(void)
+{
+	int tab[4] = {1, 2, 3, 4};
+	iter(tab, 4, zero);
+    std::cout << std::endl;
+	iter(tab, 4, zeroTmp);
+    std::cout << std::endl;
+	std::string str_tab[3] = {"Hello", "World", "!!!"};
+	iter(str_tab, 3, zeroTmp);
 }
